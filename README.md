@@ -1,31 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a ToDo List App created using next.js, typescript, and tailwind.css.
 
-## Getting Started
+Demo: ""
 
-First, run the development server:
+## To run application locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+First, fork and clone the github repository locally
+
+Second, install the dependencies
+**npm install**
+
+Third, run the development server:
+**npm run dev**
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Steps followed in creating the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Create Heading and basic Add task button(popping a modal)
+2. Create store using mobx state tree
+3. Implement Addtasks functionality
+4. Implement change status functionality for each task
+5. Insert update functionality for each task
+6. Implement delete functionality
+7. Final CSS touches
+8. Deploy on Github pages
 
 ## Deploy on Vercel
 
