@@ -2,9 +2,9 @@
 
 import React, { FormEventHandler, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import Modal from "./Modal";
 import ToDoStore from "./ToDoStore";
 import { observer } from "mobx-react";
+import ModalAdd from "./Modal";
 
 const AddTask = observer(() => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -14,18 +14,24 @@ const AddTask = observer(() => {
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     console.log(ToDoStore.todos);
-    ToDoStore.addTodo(newTodoTitle, newTodoDes, false);
+    newTodoTitle !== ""
+      ? ToDoStore.addTodo(newTodoTitle, newTodoDes, false)
+      : ToDoStore.addTodo("Untitled", newTodoDes, false);
     setModalOpen(false);
   };
   return (
     <div>
       <button
-        onClick={() => setModalOpen(true)}
+        onClick={() => {
+          setNewTodoDes("");
+          setNewTodoTitle("");
+          setModalOpen(true);
+        }}
         className="btn btn-primary w-full text-white"
       >
         Add new task <AiOutlinePlus size={18} />
       </button>
-      <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      <ModalAdd modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <form onSubmit={handleSubmitNewTodo}>
           <h3 className="font-bold text-lg">Add new Task</h3>
           <div className="modal-action flex flex-col content-center">
@@ -48,7 +54,7 @@ const AddTask = observer(() => {
             </button>
           </div>
         </form>
-      </Modal>
+      </ModalAdd>
     </div>
   );
 });

@@ -8,14 +8,12 @@ const Todo = types
     status: types.optional(types.boolean, false),
   })
   .actions((self) => {
-    function setName(newTitle: string) {
-      self.title = newTitle;
-    }
+    //function for changing the status
     function toggleStatus() {
       self.status = !self.status;
     }
 
-    return { setName, toggleStatus };
+    return { toggleStatus };
   });
 
 //RootStore --- Store for all Todos(tasks)
@@ -24,11 +22,28 @@ const RootStore = types
     todos: types.optional(types.array(Todo), []),
   })
   .actions((self) => {
+    //function for adding tasks
     function addTodo(title: string, description: string, status: boolean) {
       let temp = Todo.create({ title, description, status });
       self.todos.push(temp);
     }
-    return { addTodo };
+    //function for updating tasks
+    function updateTodo(
+      index: number,
+      title: string,
+      description: string,
+      status: boolean
+    ) {
+      let temp = Todo.create({ title, description, status });
+      self.todos.splice(index, 1, temp);
+    }
+
+    //function for deleting tasks
+    function deleteTodo(index: number) {
+      self.todos.splice(index, 1);
+    }
+
+    return { addTodo, updateTodo, deleteTodo };
   });
 
 const ToDoStore = RootStore.create({
