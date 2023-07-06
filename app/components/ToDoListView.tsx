@@ -2,7 +2,7 @@
 import ModalUpdate from "./ModalUpdate";
 import { values } from "mobx";
 import { observer } from "mobx-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdPendingActions } from "react-icons/md";
 import { AiOutlineFileDone } from "react-icons/ai";
 import ModalDelete from "./ModalDelete";
