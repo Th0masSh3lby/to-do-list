@@ -16,12 +16,12 @@ const ToDoListView = observer((props: any) => {
   const [ind, setInd] = useState(0);
 
   return (
-    <div className="grid w-full grid-cols-2 gap-4 mt-4 px-20">
+    <div className="grid w-5/6 grid-cols-1 sm:grid-cols-2 sm:gap-4">
       {values(props.store.todos).map((todo, index) => (
-        <div key={index} className="card bg-base-100 shadow-xl mt-4    ">
+        <div key={index} className="card bg-base-100 shadow-xl mt-4">
           <div className="card-body">
-            <h2 className="card-title">
-              #{index}:{todo.title}
+            <h2 className="card-title font-semibold text-2xl mt-0">
+              {todo.title}
             </h2>
             {/*Task Title*/}
             <p className="mb-4">{todo.description}</p>
@@ -32,14 +32,14 @@ const ToDoListView = observer((props: any) => {
               {todo.status ? (
                 <div
                   onClick={() => {
-                    todo.toggleStatus();
+                    todo.toggleStatus(); //change the status of task
                   }}
                   className="flex pt-1 hover:cursor-pointer"
                   content="center"
                 >
                   <AiOutlineFileDone color="green" size={20} />
 
-                  <p className="ml-1 text-sm"> Done</p>
+                  <p className="ml-1 text-sm"> Completed</p>
                 </div>
               ) : (
                 <div
@@ -64,7 +64,7 @@ const ToDoListView = observer((props: any) => {
                     setInd(index);
                     console.log(index);
                   }}
-                  className="btn btn-primary btn-sm mx-1 text-white"
+                  className="btn btn-primary btn-sm mx-1 text-white mb-2"
                 >
                   Update
                 </button>

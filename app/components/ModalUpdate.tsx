@@ -50,8 +50,8 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({
             setModalOpen(false);
           }}
         >
-          <h3 className="font-bold text-lg">Add new Task</h3>
-          <div className="modal-action flex flex-col content-center">
+          <h3 className="font-bold text-lg ml-3 mb-1">Update Task</h3>
+          <div className="modal-action flex flex-col content-center mt-0">
             <input
               value={TodoTitle}
               onChange={(e) => setTodoTitle(e.target.value)}
@@ -64,7 +64,7 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({
               onChange={(e) => setTodoDes(e.target.value)}
               type="text"
               placeholder="Description"
-              className="input input-bordered h-20 mb-2 "
+              className="input input-bordered mb-2 "
             />
             <button type="submit" className="btn btn-primary ">
               Submit

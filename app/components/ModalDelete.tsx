@@ -42,10 +42,19 @@ const ModalDelete: React.FC<ModalDelProps> = ({
             setModalOpen(false);
           }}
         >
-          <h3 className="font-bold text-lg">Delete this Task?</h3>
+          <h3 className="font-bold text-lg mb-3">Delete this Task?</h3>
 
-          <button type="submit" className="btn btn-primary ">
+          <button type="submit" className="btn btn-primary btn-sm mr-2">
             Yes
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setModalOpen(false);
+            }}
+            className="btn btn-primary btn-sm"
+          >
+            No
           </button>
         </form>
       </div>

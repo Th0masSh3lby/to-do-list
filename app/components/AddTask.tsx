@@ -27,9 +27,9 @@ const AddTask = observer(() => {
           setNewTodoTitle("");
           setModalOpen(true);
         }}
-        className="btn btn-primary w-full text-white"
+        className="btn btn-primary rounded-full mb-0 sm:w-full text-white"
       >
-        Add new task <AiOutlinePlus size={18} />
+        Add task <AiOutlinePlus size={18} />
       </button>
       <ModalAdd
         modalOpen={modalOpen}

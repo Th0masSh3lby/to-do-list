@@ -52,8 +52,8 @@ const ModalAdd: React.FC<ModalAddProps> = ({
           </svg>
         </button>
         <form onSubmit={handleSubmitNewTodo}>
-          <h3 className="font-bold text-lg">Add new Task</h3>
-          <div className="modal-action flex flex-col content-center">
+          <h3 className="font-bold text-lg ml-3 mb-0">Add new Task</h3>
+          <div className="modal-action flex flex-col content-center mt-0">
             <input
               value={newTodoTitle}
               onChange={(e) => setNewTodoTitle(e.target.value)}
@@ -66,7 +66,7 @@ const ModalAdd: React.FC<ModalAddProps> = ({
               onChange={(e) => setNewTodoDes(e.target.value)}
               type="text"
               placeholder="Description"
-              className="input input-bordered h-20 mb-2 "
+              className="input input-bordered  mb-2 "
             />
             <button type="submit" className="btn btn-primary ">
               Submit
