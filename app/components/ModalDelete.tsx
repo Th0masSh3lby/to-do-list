@@ -1,16 +1,17 @@
 import React from "react";
+import ToDoStore from "./ToDoStore";
 
-//Modal to add and update tasks
-interface ModalProps {
+//Modal to delete tasks
+interface ModalDelProps {
   modalOpen: boolean;
   setModalOpen: (open: boolean) => boolean | void;
-  children: React.ReactNode;
+  ind: number;
 }
 
-const ModalAdd: React.FC<ModalProps> = ({
+const ModalDelete: React.FC<ModalDelProps> = ({
   modalOpen,
   setModalOpen,
-  children,
+  ind,
 }) => {
   return (
     <div className={`modal ${modalOpen ? "modal-open" : ""}`}>
@@ -34,10 +35,22 @@ const ModalAdd: React.FC<ModalProps> = ({
             />
           </svg>
         </button>
-        {children}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            ToDoStore.deleteTodo(ind);
+            setModalOpen(false);
+          }}
+        >
+          <h3 className="font-bold text-lg">Delete this Task?</h3>
+
+          <button type="submit" className="btn btn-primary ">
+            Yes
+          </button>
+        </form>
       </div>
     </div>
   );
 };
 
-export default ModalAdd;
+export default ModalDelete;
