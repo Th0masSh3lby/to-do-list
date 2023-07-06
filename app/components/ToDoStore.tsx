@@ -1,7 +1,7 @@
-import { types, getParent } from "mobx-state-tree";
-
+"use client";
+import { types, onSnapshot } from "mobx-state-tree";
 //Todo -- task with name, description and status
-const Todo = types
+const toDo = types
   .model({
     title: types.optional(types.string, ""),
     description: types.optional(types.string, ""),
@@ -12,19 +12,18 @@ const Todo = types
     function toggleStatus() {
       self.status = !self.status;
     }
-
     return { toggleStatus };
   });
 
 //RootStore --- Store for all Todos(tasks)
 const RootStore = types
   .model({
-    todos: types.optional(types.array(Todo), []),
+    todos: types.optional(types.array(toDo), []),
   })
   .actions((self) => {
     //function for adding tasks
     function addTodo(title: string, description: string, status: boolean) {
-      let temp = Todo.create({ title, description, status });
+      let temp = toDo.create({ title, description, status });
       self.todos.push(temp);
     }
     //function for updating tasks
@@ -34,7 +33,7 @@ const RootStore = types
       description: string,
       status: boolean
     ) {
-      let temp = Todo.create({ title, description, status });
+      let temp = toDo.create({ title, description, status });
       self.todos.splice(index, 1, temp);
     }
 
@@ -46,19 +45,37 @@ const RootStore = types
     return { addTodo, updateTodo, deleteTodo };
   });
 
-const ToDoStore = RootStore.create({
+let initialState: any = {
   todos: [
     {
-      title: "Eat a cake",
-      description: "description of the task",
-      status: false,
-    },
-    {
-      title: "Running",
-      description: "Run atleast 5km",
+      title: "Next.js",
+      description: "Learn Next.js and solve the assignment given",
       status: true,
     },
+    {
+      title: "Assignment",
+      description: "Submit Assigment before due date",
+      status: false,
+    },
   ],
+};
+
+//setting local storage and changing initial state if local storage exists
+
+if (localStorage.getItem("ToDoStoreList")) {
+  const json = JSON.parse(localStorage.getItem("ToDoStoreList") || "");
+  console.log(json);
+  if (RootStore.is(json)) {
+    initialState = json;
+  }
+}
+
+const toDoStore = RootStore.create(initialState);
+onSnapshot(toDoStore, (snapshot) => {
+  globalThis.window.localStorage.setItem(
+    "ToDoStoreList",
+    JSON.stringify(snapshot)
+  );
 });
 
-export default ToDoStore;
+export default toDoStore;

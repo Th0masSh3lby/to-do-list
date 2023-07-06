@@ -1,5 +1,5 @@
 import React from "react";
-import ToDoStore from "./ToDoStore";
+import toDoStore from "./ToDoStore";
 
 //Modal to delete tasks
 interface ModalDelProps {
@@ -38,7 +38,7 @@ const ModalDelete: React.FC<ModalDelProps> = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            ToDoStore.deleteTodo(ind);
+            toDoStore.deleteTodo(ind);
             setModalOpen(false);
           }}
         >

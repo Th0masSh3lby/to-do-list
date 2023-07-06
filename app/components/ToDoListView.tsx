@@ -5,7 +5,6 @@ import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { MdPendingActions } from "react-icons/md";
 import { AiOutlineFileDone } from "react-icons/ai";
-import ToDoStore from "./ToDoStore";
 import ModalDelete from "./ModalDelete";
 
 const ToDoListView = observer((props: any) => {

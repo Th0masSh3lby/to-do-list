@@ -1,9 +1,7 @@
 "use client";
-
-import { observer } from "mobx-react";
 import AddTask from "./components/AddTask";
 import ToDoListView from "./components/ToDoListView";
-import ToDoStore from "./components/ToDoStore";
+import toDoStore from "./components/ToDoStore";
 
 export default function Home() {
   return (
@@ -19,7 +17,7 @@ export default function Home() {
       </div>
       <div className="bg-black h-0.5 w-5/6"></div>
       {/*-------Current List Grid View-------*/}
-      <ToDoListView store={ToDoStore} />
+      <ToDoListView store={toDoStore} />
     </main>
   );
 }

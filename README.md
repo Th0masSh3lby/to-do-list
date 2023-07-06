@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Steps followed in creating the app.
 
 1. Create Heading and basic Add task button(popping a modal)
-2. Create store using mobx state tree
+2. Create store using mobx state tree and storing in local storage
 3. Implement Addtasks functionality
 4. Implement change status functionality for each task
 5. Insert update functionality for each task

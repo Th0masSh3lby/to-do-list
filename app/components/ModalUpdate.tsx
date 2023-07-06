@@ -1,5 +1,5 @@
 import React from "react";
-import ToDoStore from "./ToDoStore";
+import toDoStore from "./ToDoStore";
 
 //Modal to update tasks
 interface ModalUpdateProps {
@@ -46,7 +46,7 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            ToDoStore.updateTodo(ind, TodoTitle, TodoDes, false);
+            toDoStore.updateTodo(ind, TodoTitle, TodoDes, false);
             setModalOpen(false);
           }}
         >
